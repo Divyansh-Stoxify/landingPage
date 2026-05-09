@@ -1,33 +1,48 @@
-@import url('https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,600;12..96,700;12..96,800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&display=swap');
+/* Smallcase-matched design system — Inter (closest free match to Graphik Web) */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
 
 :root {
-  --brand: #2D5BE3;
-  --brand-dark: #1E44C0;
-  --brand-light: #EEF2FF;
-  --brand-mid: #C7D7FF;
+  /* ── Brand Colors (Smallcase exact palette) ── */
+  --brand: #1F7AE0;
+  --brand-dark: #1567C2;
+  --brand-light: #EBF3FD;
+  --brand-mid: rgba(31, 122, 224, 0.3);
+
+  /* ── Semantic Colors ── */
+  --green: #1B9E4B;
+  --green-light: #E8F8EE;
   --orange: #F97316;
   --orange-light: #FFF4ED;
-  --green: #059669;
-  --green-light: #ECFDF5;
-  --red: #DC2626;
-  --red-light: #FEF2F2;
-  --ink: #111827;
-  --ink-2: #374151;
-  --muted: #6B7280;
-  --muted-2: #9CA3AF;
-  --line: #E5E7EB;
-  --line-2: #F3F4F6;
-  --surface: #F8F9FC;
+  --red: #D93025;
+  --red-light: #FDECEA;
+
+  /* ── Text Colors (Smallcase exact) ── */
+  --ink: #000000;
+  --ink-2: #1A1A1A;
+  --muted: #535B62;
+  --muted-2: #81878C;
+
+  /* ── Surface & Border (Smallcase exact) ── */
+  --line: #E0E4E7;
+  --line-2: #F9FAFC;
+  --surface: #F9FAFC;
   --white: #FFFFFF;
-  --font-display: 'Bricolage Grotesque', sans-serif;
-  --font-body: 'DM Sans', sans-serif;
-  --shadow-sm: 0 1px 3px rgba(0,0,0,0.08), 0 1px 2px rgba(0,0,0,0.06);
-  --shadow-md: 0 4px 16px rgba(0,0,0,0.08), 0 2px 6px rgba(0,0,0,0.05);
-  --shadow-lg: 0 16px 48px rgba(0,0,0,0.1), 0 4px 12px rgba(0,0,0,0.06);
-  --shadow-xl: 0 32px 80px rgba(0,0,0,0.12), 0 8px 24px rgba(0,0,0,0.07);
-  --radius: 12px;
-  --radius-lg: 20px;
-  --radius-xl: 28px;
+  --footer-bg: #141B23;
+
+  /* ── Typography (Inter — Graphik Web substitute) ── */
+  --font-display: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-body: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+
+  /* ── Shadows ── */
+  --shadow-sm: 0 1px 3px rgba(0,0,0,0.12);
+  --shadow-md: 0 4px 12px rgba(0,0,0,0.08);
+  --shadow-lg: 0 8px 24px rgba(0,0,0,0.1);
+  --shadow-xl: 0 16px 48px rgba(0,0,0,0.12);
+
+  /* ── Border Radius (Smallcase minimal) ── */
+  --radius: 4px;
+  --radius-lg: 8px;
+  --radius-xl: 12px;
 }
 
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -87,24 +102,24 @@ body {
 .nav-actions { display: flex; gap: 8px; margin-left: auto; }
 .btn {
   display: inline-flex; align-items: center; gap: 6px;
-  font-family: var(--font-body); font-size: 14px; font-weight: 600;
-  padding: 9px 20px; border-radius: 10px;
+  font-family: var(--font-body); font-size: 13px; font-weight: 500;
+  padding: 9px 20px; border-radius: var(--radius);
   border: none; cursor: pointer; text-decoration: none;
-  transition: all 0.18s; white-space: nowrap; letter-spacing: 0.01em;
+  transition: all 0.18s; white-space: nowrap; letter-spacing: 0;
 }
-.btn-sm { font-size: 13px; padding: 7px 16px; border-radius: 8px; }
-.btn-lg { font-size: 16px; padding: 13px 28px; border-radius: 12px; }
-.btn-xl { font-size: 17px; padding: 15px 36px; border-radius: 14px; }
-.btn-ghost { background: transparent; color: var(--muted); border: 1.5px solid var(--line); }
-.btn-ghost:hover { color: var(--ink); border-color: var(--ink-2); background: var(--line-2); }
+.btn-sm { font-size: 13px; padding: 7px 16px; border-radius: var(--radius); }
+.btn-lg { font-size: 15px; padding: 12px 26px; border-radius: var(--radius); }
+.btn-xl { font-size: 15px; padding: 14px 32px; border-radius: var(--radius); }
+.btn-ghost { background: transparent; color: var(--muted); border: 1px solid var(--line); }
+.btn-ghost:hover { color: var(--ink); border-color: var(--muted-2); background: var(--line-2); }
 .btn-primary { background: var(--brand); color: var(--white); }
-.btn-primary:hover { background: var(--brand-dark); transform: translateY(-1px); box-shadow: 0 6px 20px rgba(45,91,227,0.3); }
+.btn-primary:hover { background: var(--brand-dark); box-shadow: 0 4px 12px rgba(31,122,224,0.3); }
 .btn-orange { background: var(--orange); color: var(--white); }
-.btn-orange:hover { background: #EA6F0C; transform: translateY(-1px); box-shadow: 0 6px 20px rgba(249,115,22,0.3); }
-.btn-outline { background: transparent; color: var(--brand); border: 1.5px solid var(--brand-mid); }
-.btn-outline:hover { background: var(--brand-light); }
+.btn-orange:hover { background: #EA6F0C; box-shadow: 0 4px 12px rgba(249,115,22,0.3); }
+.btn-outline { background: var(--white); color: var(--brand); border: 1px solid rgba(31,122,224,0.3); }
+.btn-outline:hover { background: var(--brand-light); border-color: var(--brand); }
 .btn-dark { background: var(--ink); color: var(--white); }
-.btn-dark:hover { background: var(--ink-2); transform: translateY(-1px); box-shadow: var(--shadow-md); }
+.btn-dark:hover { background: var(--ink-2); box-shadow: var(--shadow-md); }
 
 /* ── SECTION BASE ── */
 section { padding: 96px 40px; }
@@ -116,12 +131,12 @@ section { padding: 96px 40px; }
   color: var(--brand); margin-bottom: 14px;
 }
 .section-tag-orange { color: var(--orange); }
-h1, h2, h3, h4 { font-family: var(--font-display); letter-spacing: -0.03em; }
-h1 { font-size: clamp(38px, 5vw, 64px); font-weight: 800; line-height: 1.06; color: var(--ink); }
-h2 { font-size: clamp(28px, 3.5vw, 48px); font-weight: 800; line-height: 1.1; color: var(--ink); }
-h3 { font-size: 20px; font-weight: 700; line-height: 1.25; }
+h1, h2, h3, h4 { font-family: var(--font-display); letter-spacing: -0.01em; }
+h1 { font-size: clamp(32px, 4vw, 52px); font-weight: 500; line-height: 1.15; color: var(--ink); }
+h2 { font-size: clamp(24px, 3vw, 40px); font-weight: 500; line-height: 1.2; color: var(--ink); }
+h3 { font-size: 20px; font-weight: 500; line-height: 1.3; }
 .lead {
-  font-size: clamp(16px, 1.8vw, 19px); color: var(--muted);
+  font-size: clamp(15px, 1.6vw, 17px); color: var(--muted);
   line-height: 1.65; font-weight: 400;
 }
 
@@ -135,7 +150,7 @@ h3 { font-size: 20px; font-weight: 700; line-height: 1.25; }
 
 /* ── FOOTER ── */
 footer {
-  background: var(--ink);
+  background: var(--footer-bg);
   padding: 64px 40px 36px;
 }
 .footer-inner { max-width: 1200px; margin: 0 auto; }
@@ -212,11 +227,11 @@ footer {
 /* ── CARD ── */
 .card {
   background: var(--white);
-  border: 1.5px solid var(--line);
+  border: 1px solid var(--line);
   border-radius: var(--radius-lg);
-  transition: box-shadow 0.2s, transform 0.2s;
+  transition: box-shadow 0.2s;
 }
-.card:hover { box-shadow: var(--shadow-lg); transform: translateY(-2px); }
+.card:hover { box-shadow: var(--shadow-md); }
 
 /* ── RESPONSIVE ── */
 @media (max-width: 860px) {
