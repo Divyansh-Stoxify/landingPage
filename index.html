@@ -1,0 +1,660 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Stoxify — India's Real-Time Trade Idea Marketplace</title>
+<link rel="stylesheet" href="shared.css">
+<style>
+/* ── HERO ── */
+.hero {
+  min-height: 100vh;
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  padding: 120px 40px 80px;
+  background: var(--white);
+  position: relative; overflow: hidden;
+}
+.hero-bg {
+  position: absolute; inset: 0; z-index: 0;
+  background:
+    radial-gradient(ellipse 80% 60% at 50% -10%, rgba(45,91,227,0.07) 0%, transparent 70%),
+    radial-gradient(ellipse 50% 40% at 80% 80%, rgba(249,115,22,0.05) 0%, transparent 60%);
+}
+.hero-content {
+  position: relative; z-index: 1;
+  text-align: center; max-width: 860px;
+}
+.hero-badge {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: var(--brand-light); border: 1px solid var(--brand-mid);
+  border-radius: 100px; padding: 6px 16px;
+  font-size: 13px; font-weight: 600; color: var(--brand);
+  margin-bottom: 28px;
+  animation: fadeUp 0.5s ease both;
+}
+.live-dot {
+  width: 6px; height: 6px; border-radius: 50%;
+  background: var(--brand);
+  animation: blink 2s ease-in-out infinite;
+}
+@keyframes blink { 0%,100%{opacity:1} 50%{opacity:0.3} }
+@keyframes fadeUp { from{opacity:0;transform:translateY(16px)} to{opacity:1;transform:translateY(0)} }
+.hero h1 {
+  margin-bottom: 22px;
+  animation: fadeUp 0.5s 0.08s ease both;
+}
+.hero h1 em { font-style: normal; color: var(--brand); }
+.hero .lead {
+  max-width: 580px; margin: 0 auto 36px;
+  animation: fadeUp 0.5s 0.16s ease both;
+}
+.hero-ctas {
+  display: flex; gap: 12px; justify-content: center; flex-wrap: wrap;
+  animation: fadeUp 0.5s 0.24s ease both;
+}
+.hero-cta-divider {
+  display: flex; align-items: center; gap: 8px;
+  font-size: 13px; color: var(--muted-2); font-weight: 500;
+}
+.hero-social-proof {
+  display: flex; align-items: center; gap: 6px;
+  font-size: 13px; color: var(--muted); margin-top: 28px;
+  justify-content: center;
+  animation: fadeUp 0.5s 0.32s ease both;
+}
+.avatar-stack { display: flex; }
+.avatar-stack span {
+  width: 28px; height: 28px; border-radius: 50%;
+  border: 2px solid var(--white);
+  background: var(--brand-light);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 11px; font-weight: 700; color: var(--brand);
+  margin-left: -8px;
+}
+.avatar-stack span:first-child { margin-left: 0; }
+
+/* Hero visual */
+.hero-visual {
+  position: relative; z-index: 1;
+  margin-top: 64px;
+  animation: fadeUp 0.6s 0.4s ease both;
+  max-width: 960px; width: 100%; margin-inline: auto;
+}
+.split-cards {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 20px; align-items: start;
+}
+.split-label {
+  font-size: 11px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: 0.1em;
+  color: var(--muted-2); margin-bottom: 12px;
+  text-align: center;
+}
+.path-card {
+  background: var(--white);
+  border: 1.5px solid var(--line);
+  border-radius: var(--radius-xl);
+  padding: 32px;
+  box-shadow: var(--shadow-lg);
+  text-align: left;
+}
+.path-icon {
+  width: 48px; height: 48px; border-radius: 14px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 22px; margin-bottom: 18px;
+}
+.pi-blue { background: var(--brand-light); }
+.pi-orange { background: var(--orange-light); }
+.path-card h3 { margin-bottom: 8px; font-size: 19px; }
+.path-card p { font-size: 14px; color: var(--muted); line-height: 1.6; margin-bottom: 20px; }
+.path-features { list-style: none; display: flex; flex-direction: column; gap: 8px; margin-bottom: 24px; }
+.path-features li {
+  display: flex; align-items: center; gap: 8px;
+  font-size: 13px; color: var(--ink-2); font-weight: 500;
+}
+.pf-dot { width: 6px; height: 6px; border-radius: 50%; flex-shrink: 0; }
+.pf-blue { background: var(--brand); }
+.pf-orange { background: var(--orange); }
+
+/* ── WHAT IS STOXIFY ── */
+.what { background: var(--surface); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+.what-inner { max-width: 1100px; margin: 0 auto; }
+.what-header { text-align: center; margin-bottom: 60px; }
+.what-header .lead { margin: 12px auto 0; max-width: 560px; }
+.vs-grid {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 24px;
+}
+.vs-card {
+  background: var(--white);
+  border: 1.5px solid var(--line);
+  border-radius: var(--radius-xl);
+  padding: 36px;
+}
+.vs-card-label {
+  font-size: 11px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: 0.1em;
+  color: var(--muted-2); margin-bottom: 8px;
+}
+.vs-card h3 { margin-bottom: 12px; }
+.vs-card p { font-size: 15px; color: var(--muted); line-height: 1.7; margin-bottom: 24px; }
+.vs-diff {
+  background: var(--surface);
+  border-radius: 10px; padding: 14px 18px;
+  font-size: 13px; color: var(--ink-2); font-weight: 500;
+  border-left: 3px solid var(--brand);
+}
+.vs-diff.orange { border-left-color: var(--orange); }
+.vs-tag { margin-bottom: 16px; }
+
+/* ── HOW IT WORKS ── */
+.how { background: var(--white); }
+.how-inner { max-width: 1100px; margin: 0 auto; }
+.how-header { text-align: center; margin-bottom: 56px; }
+.how-grid {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 40px;
+}
+.how-col h4 {
+  font-family: var(--font-display);
+  font-size: 16px; font-weight: 700;
+  margin-bottom: 24px;
+  display: flex; align-items: center; gap: 10px;
+}
+.how-col-badge {
+  font-size: 11px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: 0.1em;
+  padding: 3px 10px; border-radius: 100px;
+}
+.hcb-blue { background: var(--brand-light); color: var(--brand); }
+.hcb-orange { background: var(--orange-light); color: var(--orange); }
+.how-steps { display: flex; flex-direction: column; gap: 0; }
+.how-step {
+  display: flex; gap: 16px;
+  padding: 20px 0;
+  border-bottom: 1px solid var(--line);
+}
+.how-step:last-child { border-bottom: none; }
+.how-step-num {
+  font-family: var(--font-display);
+  font-size: 13px; font-weight: 800;
+  color: var(--brand); width: 28px; flex-shrink: 0;
+  padding-top: 2px;
+}
+.how-step-num.orange { color: var(--orange); }
+.how-step-body h5 {
+  font-size: 15px; font-weight: 700; margin-bottom: 4px;
+  font-family: var(--font-display); letter-spacing: -0.02em;
+}
+.how-step-body p { font-size: 14px; color: var(--muted); line-height: 1.6; }
+
+/* ── STATS ── */
+.stats { background: var(--ink); padding: 72px 40px; }
+.stats-inner {
+  max-width: 1100px; margin: 0 auto;
+  display: grid; grid-template-columns: repeat(4, 1fr);
+  gap: 0; text-align: center;
+}
+.stat {
+  padding: 20px 24px;
+  border-right: 1px solid rgba(255,255,255,0.1);
+}
+.stat:last-child { border-right: none; }
+.stat-num {
+  font-family: var(--font-display);
+  font-size: 44px; font-weight: 800;
+  color: var(--white); letter-spacing: -2px; line-height: 1;
+  margin-bottom: 6px;
+}
+.stat-num sup { font-size: 24px; vertical-align: super; }
+.stat-label { font-size: 14px; color: rgba(255,255,255,0.45); }
+
+/* ── FEATURED ANALYSTS ── */
+.analysts { background: var(--surface); border-top: 1px solid var(--line); }
+.analysts-header {
+  text-align: center; margin-bottom: 48px;
+}
+.analysts-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  gap: 20px; max-width: 1100px; margin: 0 auto 36px;
+}
+.analyst-card {
+  background: var(--white);
+  border: 1.5px solid var(--line);
+  border-radius: var(--radius-lg);
+  padding: 24px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.analyst-card:hover { box-shadow: var(--shadow-lg); transform: translateY(-3px); border-color: var(--brand-mid); }
+.ac-top { display: flex; align-items: flex-start; gap: 14px; margin-bottom: 16px; }
+.ac-avatar {
+  width: 48px; height: 48px; border-radius: 14px;
+  flex-shrink: 0; display: flex; align-items: center; justify-content: center;
+  font-family: var(--font-display); font-size: 18px; font-weight: 800;
+  color: var(--white);
+}
+.av1 { background: linear-gradient(135deg,#3B82F6,#1D4ED8); }
+.av2 { background: linear-gradient(135deg,#8B5CF6,#6D28D9); }
+.av3 { background: linear-gradient(135deg,#F59E0B,#D97706); }
+.ac-info h4 {
+  font-size: 15px; font-weight: 700; margin-bottom: 3px;
+  font-family: var(--font-display); letter-spacing: -0.02em;
+}
+.ac-sebi { font-size: 11px; font-weight: 600; color: var(--muted-2); }
+.ac-stats { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 8px; margin-bottom: 16px; }
+.ac-stat { text-align: center; background: var(--surface); border-radius: 8px; padding: 10px 8px; }
+.ac-stat-val {
+  font-family: var(--font-display);
+  font-size: 17px; font-weight: 800; color: var(--ink);
+  letter-spacing: -0.5px; line-height: 1;
+}
+.ac-stat-val.green { color: var(--green); }
+.ac-stat-label { font-size: 10px; color: var(--muted); margin-top: 3px; }
+.ac-tags { display: flex; gap: 6px; flex-wrap: wrap; }
+
+/* ── DUAL CTA ── */
+.dual-cta { background: var(--white); }
+.dual-cta-inner {
+  max-width: 1100px; margin: 0 auto;
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 24px;
+}
+.cta-panel {
+  border-radius: var(--radius-xl); padding: 48px 40px;
+  position: relative; overflow: hidden;
+}
+.cta-panel-trader { background: var(--brand); }
+.cta-panel-analyst { background: var(--ink); }
+.cta-panel h3 {
+  font-size: 28px; font-weight: 800;
+  color: var(--white); margin-bottom: 10px;
+  letter-spacing: -0.5px;
+}
+.cta-panel p { font-size: 15px; color: rgba(255,255,255,0.6); margin-bottom: 28px; line-height: 1.6; }
+.cta-panel-bg {
+  position: absolute;
+  right: -40px; bottom: -40px;
+  font-size: 120px; opacity: 0.06; line-height: 1;
+  pointer-events: none; user-select: none;
+}
+
+@media (max-width: 860px) {
+  .split-cards { grid-template-columns: 1fr; }
+  .vs-grid { grid-template-columns: 1fr; }
+  .how-grid { grid-template-columns: 1fr; }
+  .stats-inner { grid-template-columns: 1fr 1fr; gap: 20px; }
+  .stat { border-right: none; border-bottom: 1px solid rgba(255,255,255,0.1); padding: 20px 0; }
+  .stat:last-child { border-bottom: none; }
+  .analysts-grid { grid-template-columns: 1fr 1fr; }
+  .dual-cta-inner { grid-template-columns: 1fr; }
+  .hero { padding: 100px 24px 60px; }
+  .stats { padding: 56px 24px; }
+}
+@media (max-width: 560px) {
+  .analysts-grid { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo"><span class="nav-logo-dot"></span>Stoxify</a>
+    <ul class="nav-links">
+      <li><a href="index.html" class="active">Home</a></li>
+      <li><a href="for-traders.html">For Traders</a></li>
+      <li><a href="for-analysts.html">For Research Analysts</a></li>
+    </ul>
+    <div class="nav-actions">
+      <a href="#" class="btn btn-ghost">Log In</a>
+      <a href="for-traders.html" class="btn btn-primary">Get Started</a>
+    </div>
+  </div>
+</nav>
+
+<!-- TICKER -->
+<div class="ticker-bar" style="margin-top:66px;">
+  <div class="ticker-track">
+    <span class="ticker-item"><span class="t-sym">NIFTY 50</span><span class="t-price">22,463</span><span class="t-up">▲ 0.41%</span></span>
+    <span class="ticker-item"><span class="t-sym">RELIANCE</span><span class="t-price">₹2,847</span><span class="t-up">▲ 1.24%</span></span>
+    <span class="ticker-item"><span class="t-sym">TCS</span><span class="t-price">₹3,412</span><span class="t-dn">▼ 0.38%</span></span>
+    <span class="ticker-item"><span class="t-sym">HDFC BANK</span><span class="t-price">₹1,654</span><span class="t-up">▲ 0.87%</span></span>
+    <span class="ticker-item"><span class="t-sym">INFOSYS</span><span class="t-price">₹1,389</span><span class="t-up">▲ 2.10%</span></span>
+    <span class="ticker-item"><span class="t-sym">ICICI BANK</span><span class="t-price">₹1,102</span><span class="t-up">▲ 0.55%</span></span>
+    <span class="ticker-item"><span class="t-sym">WIPRO</span><span class="t-price">₹478</span><span class="t-dn">▼ 0.92%</span></span>
+    <span class="ticker-item"><span class="t-sym">BAJAJ FIN</span><span class="t-price">₹6,820</span><span class="t-up">▲ 1.65%</span></span>
+    <span class="ticker-item"><span class="t-sym">SENSEX</span><span class="t-price">74,119</span><span class="t-up">▲ 0.36%</span></span>
+    <!-- duplicate -->
+    <span class="ticker-item"><span class="t-sym">NIFTY 50</span><span class="t-price">22,463</span><span class="t-up">▲ 0.41%</span></span>
+    <span class="ticker-item"><span class="t-sym">RELIANCE</span><span class="t-price">₹2,847</span><span class="t-up">▲ 1.24%</span></span>
+    <span class="ticker-item"><span class="t-sym">TCS</span><span class="t-price">₹3,412</span><span class="t-dn">▼ 0.38%</span></span>
+    <span class="ticker-item"><span class="t-sym">HDFC BANK</span><span class="t-price">₹1,654</span><span class="t-up">▲ 0.87%</span></span>
+    <span class="ticker-item"><span class="t-sym">INFOSYS</span><span class="t-price">₹1,389</span><span class="t-up">▲ 2.10%</span></span>
+    <span class="ticker-item"><span class="t-sym">ICICI BANK</span><span class="t-price">₹1,102</span><span class="t-up">▲ 0.55%</span></span>
+    <span class="ticker-item"><span class="t-sym">WIPRO</span><span class="t-price">₹478</span><span class="t-dn">▼ 0.92%</span></span>
+    <span class="ticker-item"><span class="t-sym">BAJAJ FIN</span><span class="t-price">₹6,820</span><span class="t-up">▲ 1.65%</span></span>
+    <span class="ticker-item"><span class="t-sym">SENSEX</span><span class="t-price">74,119</span><span class="t-up">▲ 0.36%</span></span>
+  </div>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-content">
+    <div class="hero-badge"><span class="live-dot"></span> India's First Real-Time Trade Idea Marketplace</div>
+    <h1>Trade ideas from<br><em>verified experts,</em><br>in real time.</h1>
+    <p class="lead">Stoxify connects retail traders with SEBI-registered Research Analysts who publish live trade ideas — with one-click execution, timestamped proof, and zero noise.</p>
+    <div class="hero-ctas">
+      <a href="for-traders.html" class="btn btn-primary btn-xl">I'm a Trader →</a>
+      <a href="for-analysts.html" class="btn btn-dark btn-xl">I'm a Research Analyst →</a>
+    </div>
+    <div class="hero-social-proof">
+      <div class="avatar-stack">
+        <span>AK</span><span>RS</span><span>PM</span><span>DJ</span><span>+</span>
+      </div>
+      <span>Trusted by <strong>12,000+ traders</strong> & <strong>340+ SEBI-registered RAs</strong></span>
+    </div>
+  </div>
+
+  <!-- Path Cards -->
+  <div class="hero-visual">
+    <div class="split-cards">
+      <div>
+        <div class="split-label">For Traders</div>
+        <div class="path-card">
+          <div class="path-icon pi-blue">📊</div>
+          <h3>Discover & subscribe to expert trade calls</h3>
+          <p>Browse verified Research Analysts ranked by their live performance. Get real-time BUY/SELL alerts the moment they publish.</p>
+          <ul class="path-features">
+            <li><span class="pf-dot pf-blue"></span>Real-time alerts in under 3 seconds</li>
+            <li><span class="pf-dot pf-blue"></span>Timestamped & cryptographically verified</li>
+            <li><span class="pf-dot pf-blue"></span>One-click execution via your broker</li>
+            <li><span class="pf-dot pf-blue"></span>Transparent analyst track records</li>
+          </ul>
+          <a href="for-traders.html" class="btn btn-primary" style="width:100%;justify-content:center;">Start as a Trader →</a>
+        </div>
+      </div>
+      <div>
+        <div class="split-label">For SEBI-Registered Research Analysts</div>
+        <div class="path-card">
+          <div class="path-icon pi-orange">📤</div>
+          <h3>Publish ideas, build subscribers, grow revenue</h3>
+          <p>A complete platform to monetise your research. Publish real-time trade ideas, manage subscribers, and scale your practice.</p>
+          <ul class="path-features">
+            <li><span class="pf-dot pf-orange"></span>Publish in seconds, reach subscribers instantly</li>
+            <li><span class="pf-dot pf-orange"></span>Subscription billing & payments handled</li>
+            <li><span class="pf-dot pf-orange"></span>SEBI compliance tools built in</li>
+            <li><span class="pf-dot pf-orange"></span>Analytics to grow your practice</li>
+          </ul>
+          <a href="for-analysts.html" class="btn btn-orange" style="width:100%;justify-content:center;">Join as Research Analyst →</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHAT IS STOXIFY -->
+<section class="what">
+  <div class="what-inner">
+    <div class="what-header reveal">
+      <span class="section-tag">What is Stoxify</span>
+      <h2>Like smallcase — but for<br>real-time trade ideas.</h2>
+      <p class="lead">smallcase lets advisors sell thematic portfolios. Stoxify lets SEBI Research Analysts deliver live, actionable trade calls the moment they're made.</p>
+    </div>
+    <div class="vs-grid">
+      <div class="vs-card reveal">
+        <div class="vs-tag"><span class="chip chip-blue">For Traders</span></div>
+        <h3>A marketplace of verified trade experts</h3>
+        <p>Browse SEBI-registered Research Analysts, compare their performance history, and subscribe to those that fit your style — intraday, swing, positional, F&O.</p>
+        <div class="vs-diff">
+          <strong>The key difference:</strong> You get a timestamped BUY / SELL call with exact entry, target and stop-loss — not a static portfolio. Every idea is live, real, and immediately actionable.
+        </div>
+      </div>
+      <div class="vs-card reveal d2">
+        <div class="vs-tag"><span class="chip chip-orange">For Research Analysts</span></div>
+        <h3>A business platform for SEBI-registered RAs</h3>
+        <p>Think of it as your complete advisory business infrastructure — publish ideas, collect subscriptions, stay SEBI compliant, and grow your subscriber base, all in one place.</p>
+        <div class="vs-diff orange">
+          <strong>The key difference:</strong> Unlike manual WhatsApp groups or fragmented tools, Stoxify timestamps every idea, handles billing, and gives you a branded professional profile to build trust.
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<div class="stats">
+  <div class="stats-inner">
+    <div class="stat reveal">
+      <div class="stat-num">12K<sup>+</sup></div>
+      <div class="stat-label">Active Traders</div>
+    </div>
+    <div class="stat reveal d1">
+      <div class="stat-num">340<sup>+</sup></div>
+      <div class="stat-label">SEBI-Registered RAs</div>
+    </div>
+    <div class="stat reveal d2">
+      <div class="stat-num">₹480Cr</div>
+      <div class="stat-label">Trade Volume Facilitated</div>
+    </div>
+    <div class="stat reveal d3">
+      <div class="stat-num">&lt;3s</div>
+      <div class="stat-label">Alert Delivery Time</div>
+    </div>
+  </div>
+</div>
+
+<!-- HOW IT WORKS -->
+<section class="how" id="how">
+  <div class="how-inner">
+    <div class="how-header reveal">
+      <span class="section-tag">How It Works</span>
+      <h2>Simple on both sides.</h2>
+    </div>
+    <div class="how-grid">
+      <div class="how-col reveal">
+        <h4><span class="how-col-badge hcb-blue">Trader</span> How traders use Stoxify</h4>
+        <div class="how-steps">
+          <div class="how-step">
+            <div class="how-step-num">01</div>
+            <div class="how-step-body">
+              <h5>Browse & Subscribe</h5>
+              <p>Discover SEBI-registered Research Analysts. Filter by style, segment, and verified hit rate. Subscribe with a click.</p>
+            </div>
+          </div>
+          <div class="how-step">
+            <div class="how-step-num">02</div>
+            <div class="how-step-body">
+              <h5>Get Real-Time Alerts</h5>
+              <p>The instant an analyst publishes — you're notified. BUY or SELL, with entry price, target, and stop-loss. Delivered in under 3 seconds.</p>
+            </div>
+          </div>
+          <div class="how-step">
+            <div class="how-step-num">03</div>
+            <div class="how-step-body">
+              <h5>Execute & Track</h5>
+              <p>Connect your broker and execute with one tap. Track your open positions, P&L, and subscription performance all in one dashboard.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="how-col reveal d2">
+        <h4><span class="how-col-badge hcb-orange">Research Analyst</span> How RAs use Stoxify</h4>
+        <div class="how-steps">
+          <div class="how-step">
+            <div class="how-step-num how-step-num orange">01</div>
+            <div class="how-step-body">
+              <h5>Register & Verify</h5>
+              <p>Submit your SEBI registration number. We verify and onboard you in 24 hours — your branded profile goes live instantly.</p>
+            </div>
+          </div>
+          <div class="how-step">
+            <div class="how-step-num how-step-num orange">02</div>
+            <div class="how-step-body">
+              <h5>Publish Trade Ideas</h5>
+              <p>Use our mobile app or web dashboard. Type the call, set the parameters, hit publish. It's timestamped and delivered to all your subscribers instantly.</p>
+            </div>
+          </div>
+          <div class="how-step">
+            <div class="how-step-num how-step-num orange">03</div>
+            <div class="how-step-body">
+              <h5>Grow & Earn</h5>
+              <p>Your performance record builds trust. Subscribers grow organically. Stoxify handles billing, payouts, and compliance — you focus on research.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURED ANALYSTS -->
+<section class="analysts">
+  <div class="container">
+    <div class="analysts-header reveal">
+      <span class="section-tag">Marketplace</span>
+      <h2>Meet some of our top RAs</h2>
+      <p class="lead" style="margin:12px auto 0;max-width:480px;">All analysts are SEBI-registered. Performance is verified and timestamped.</p>
+    </div>
+    <div class="analysts-grid">
+      <div class="analyst-card reveal">
+        <div class="ac-top">
+          <div class="ac-avatar av1">AK</div>
+          <div class="ac-info">
+            <h4>Arjun Kapoor</h4>
+            <div class="ac-sebi">SEBI RA · INH000012345 · Intraday & F&O</div>
+          </div>
+        </div>
+        <div class="ac-stats">
+          <div class="ac-stat"><div class="ac-stat-val green">74%</div><div class="ac-stat-label">Hit Rate</div></div>
+          <div class="ac-stat"><div class="ac-stat-val">342</div><div class="ac-stat-label">Subscribers</div></div>
+          <div class="ac-stat"><div class="ac-stat-val green">+31%</div><div class="ac-stat-label">Avg. Return</div></div>
+        </div>
+        <div class="ac-tags">
+          <span class="chip chip-blue">Intraday</span>
+          <span class="chip chip-gray">F&O</span>
+          <span class="chip chip-green">Top Rated</span>
+        </div>
+      </div>
+      <div class="analyst-card reveal d1">
+        <div class="ac-top">
+          <div class="ac-avatar av2">RS</div>
+          <div class="ac-info">
+            <h4>Riya Shah</h4>
+            <div class="ac-sebi">SEBI RA · INH000023456 · Swing & Positional</div>
+          </div>
+        </div>
+        <div class="ac-stats">
+          <div class="ac-stat"><div class="ac-stat-val green">68%</div><div class="ac-stat-label">Hit Rate</div></div>
+          <div class="ac-stat"><div class="ac-stat-val">218</div><div class="ac-stat-label">Subscribers</div></div>
+          <div class="ac-stat"><div class="ac-stat-val green">+24%</div><div class="ac-stat-label">Avg. Return</div></div>
+        </div>
+        <div class="ac-tags">
+          <span class="chip chip-blue">Swing</span>
+          <span class="chip chip-gray">Positional</span>
+        </div>
+      </div>
+      <div class="analyst-card reveal d2">
+        <div class="ac-top">
+          <div class="ac-avatar av3">PM</div>
+          <div class="ac-info">
+            <h4>Pradeep Mehta</h4>
+            <div class="ac-sebi">SEBI RA · INH000034567 · Equity & Index</div>
+          </div>
+        </div>
+        <div class="ac-stats">
+          <div class="ac-stat"><div class="ac-stat-val green">71%</div><div class="ac-stat-label">Hit Rate</div></div>
+          <div class="ac-stat"><div class="ac-stat-val">189</div><div class="ac-stat-label">Subscribers</div></div>
+          <div class="ac-stat"><div class="ac-stat-val green">+28%</div><div class="ac-stat-label">Avg. Return</div></div>
+        </div>
+        <div class="ac-tags">
+          <span class="chip chip-blue">Equity</span>
+          <span class="chip chip-gray">Index</span>
+        </div>
+      </div>
+    </div>
+    <div style="text-align:center;" class="reveal">
+      <a href="for-traders.html" class="btn btn-outline btn-lg">Browse All Research Analysts →</a>
+    </div>
+  </div>
+</section>
+
+<!-- DUAL CTA -->
+<section class="dual-cta">
+  <div class="dual-cta-inner">
+    <div class="cta-panel cta-panel-trader reveal">
+      <div class="cta-panel-bg">📊</div>
+      <h3>Start trading with expert guidance</h3>
+      <p>Subscribe to SEBI-verified Research Analysts and receive real-time trade ideas directly on your phone.</p>
+      <a href="for-traders.html" class="btn btn-xl" style="background:white;color:var(--brand);font-weight:700;">Explore as a Trader →</a>
+    </div>
+    <div class="cta-panel cta-panel-analyst reveal d2">
+      <div class="cta-panel-bg">📤</div>
+      <h3>Grow your advisory practice</h3>
+      <p>Join 340+ SEBI-registered Research Analysts already building their business on Stoxify.</p>
+      <a href="for-analysts.html" class="btn btn-xl btn-orange" style="font-weight:700;">Join as Research Analyst →</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-grid">
+      <div>
+        <a href="index.html" class="footer-logo"><span class="nav-logo-dot"></span>Stoxify</a>
+        <p class="footer-tagline">India's first real-time trade idea marketplace — connecting SEBI-registered Research Analysts with retail traders at the speed of the market.</p>
+        <div style="display:flex;gap:8px;flex-wrap:wrap;">
+          <span class="chip" style="background:rgba(255,255,255,0.07);color:rgba(255,255,255,0.5);font-size:11px;">✓ SEBI Regulated</span>
+          <span class="chip" style="background:rgba(255,255,255,0.07);color:rgba(255,255,255,0.5);font-size:11px;">🇮🇳 Made in India</span>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h5>Platform</h5>
+        <ul>
+          <li><a href="for-traders.html">For Traders</a></li>
+          <li><a href="for-analysts.html">For Research Analysts</a></li>
+          <li><a href="#">Browse Analysts</a></li>
+          <li><a href="#">Pricing</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Company</h5>
+        <ul>
+          <li><a href="#">About</a></li>
+          <li><a href="#">Blog</a></li>
+          <li><a href="#">Careers</a></li>
+          <li><a href="#">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Legal</h5>
+        <ul>
+          <li><a href="#">Privacy Policy</a></li>
+          <li><a href="#">Terms of Service</a></li>
+          <li><a href="#">SEBI Disclosures</a></li>
+          <li><a href="#">Grievance Redressal</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-copy">© 2026 Stoxify Technologies Pvt. Ltd. All rights reserved.</div>
+      <div class="footer-legal">
+        <a href="#">Privacy</a><a href="#">Terms</a><a href="#">Disclosures</a>
+      </div>
+    </div>
+    <p class="footer-disclaimer">Stoxify is a technology platform. All trade ideas are published by SEBI-registered Research Analysts. Stoxify does not provide investment advice. Investments in securities are subject to market risks. Past performance is not indicative of future results. Please read all related documents carefully before investing.</p>
+  </div>
+</footer>
+
+<script>
+const obs = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); }});
+}, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+</script>
+</body>
+</html>
