@@ -160,44 +160,30 @@
 .fn-sub { font-size: 11px; color: var(--muted); }
 
 /* ── FEATURES SECTION ── */
-.features { background: var(--surface); border-top: 1px solid var(--line); }
+.features { background: var(--surface); border-top: 1px solid var(--line); padding: 96px 40px; }
 .features-inner { max-width: 1100px; margin: 0 auto; }
 .features-header { text-align: center; margin-bottom: 56px; }
 .features-grid {
   display: grid; grid-template-columns: repeat(2, 1fr);
-  gap: 24px;
+  gap: 16px;
 }
 .feat-card {
   background: var(--white);
-  border: 1.5px solid var(--line);
-  border-radius: var(--radius-xl);
-  padding: 36px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  padding: 32px;
 }
 .feat-icon {
-  width: 52px; height: 52px; border-radius: 16px;
+  width: 44px; height: 44px; border-radius: var(--radius-lg);
   display: flex; align-items: center; justify-content: center;
-  font-size: 24px; margin-bottom: 20px;
+  font-size: 20px; margin-bottom: 18px;
 }
 .fi-1 { background: var(--brand-light); }
-.fi-2 { background: rgba(5,150,105,0.1); }
-.fi-3 { background: rgba(249,115,22,0.1); }
-.fi-4 { background: rgba(139,92,246,0.1); }
-.feat-card h3 { margin-bottom: 10px; font-size: 20px; }
-.feat-card p { font-size: 15px; color: var(--muted); line-height: 1.7; }
-.feat-card .feat-detail {
-  margin-top: 20px;
-  background: var(--surface);
-  border-radius: 10px; padding: 14px 16px;
-}
-.feat-detail-row {
-  display: flex; justify-content: space-between; align-items: center;
-  font-size: 13px; font-weight: 500;
-  padding: 6px 0; border-bottom: 1px solid var(--line);
-  color: var(--ink-2);
-}
-.feat-detail-row:last-child { border-bottom: none; }
-.fdr-val { font-weight: 700; color: var(--brand); }
-.fdr-val.green { color: var(--green); }
+.fi-2 { background: var(--green-light); }
+.fi-3 { background: var(--orange-light); }
+.fi-4 { background: rgba(139,92,246,0.08); }
+.feat-card h3 { font-size: 17px; font-weight: 600; color: var(--ink); margin-bottom: 10px; letter-spacing: -0.01em; }
+.feat-card p { font-size: 14px; color: var(--muted); line-height: 1.7; }
 
 /* ── ANALYST MARKETPLACE ── */
 .marketplace { background: var(--white); }
@@ -323,6 +309,26 @@
 .pf-check { width: 18px; height: 18px; border-radius: 50%; background: var(--brand-light); color: var(--brand); display: flex; align-items: center; justify-content: center; font-size: 10px; font-weight: 800; flex-shrink: 0; margin-top: 1px; }
 .price-card.featured .pf-check { background: rgba(255,255,255,0.2); color: white; }
 
+/* ── CAPABILITIES CARDS ── */
+.caps-sec{background:var(--footer-bg);padding:88px 40px;}
+.caps-inner{max-width:1100px;margin:0 auto;}
+.caps-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;}
+.caps-card{
+  background:rgba(255,255,255,0.04);
+  border:1px solid rgba(255,255,255,0.08);
+  border-radius:var(--radius-lg);
+  padding:36px 32px;
+  transition:background 0.2s,border-color 0.2s;
+}
+.caps-card:hover{background:rgba(255,255,255,0.07);border-color:rgba(255,255,255,0.14);}
+.caps-card-icon{
+  width:48px;height:48px;border-radius:var(--radius-lg);
+  display:flex;align-items:center;justify-content:center;
+  font-size:22px;margin-bottom:20px;
+}
+.caps-card-title{font-size:20px;font-weight:600;color:#fff;margin-bottom:12px;letter-spacing:-0.01em;}
+.caps-card-desc{font-size:14px;color:rgba(255,255,255,0.5);line-height:1.7;}
+
 /* ── FINAL CTA ── */
 .final-cta {
   background: linear-gradient(135deg, #1a3ab8 0%, #2D5BE3 50%, #3d6ef5 100%);
@@ -334,17 +340,32 @@
 .final-cta .btn-xl:hover { background: rgba(255,255,255,0.9); transform: translateY(-2px); box-shadow: 0 12px 32px rgba(0,0,0,0.2); }
 
 @media (max-width: 860px) {
-  .hero-inner { grid-template-columns: 1fr; gap: 48px; }
+  .hero-inner { grid-template-columns: 1fr; gap: 40px; }
+  .alert-mockup { display: none; }
+  .hero { padding: 100px 24px 64px; }
+  .hero-ctas { flex-direction: column; }
+  .hero-ctas .btn { width: 100%; justify-content: center; }
   .features-grid { grid-template-columns: 1fr; }
   .mp-grid { grid-template-columns: 1fr 1fr; }
   .hiw-steps { grid-template-columns: 1fr; }
   .hiw-steps::before { display: none; }
   .pricing-grid { grid-template-columns: 1fr; max-width: 420px; margin: 0 auto; }
-  .hero { padding: 110px 24px 72px; }
+  /* Trust cards */
+  [style*="grid-template-columns: 1fr 1fr"] { grid-template-columns: 1fr !important; }
 }
 @media (max-width: 560px) {
   .mp-grid { grid-template-columns: 1fr; }
+  .hero-trust { flex-direction: column; gap: 10px; }
 }
+}
+/* ── TRUST CARDS ── */
+.trust-card {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  padding: 28px;
+}
+
 </style>
 </head>
 <body>
@@ -358,6 +379,9 @@
       <li><a href="for-traders.html" class="active">For Traders</a></li>
       <li><a href="for-analysts.html">For Research Analysts</a></li>
     </ul>
+    <button class="nav-hamburger" id="nav-hamburger" aria-label="Open menu">
+      <span></span><span></span><span></span>
+    </button>
     <div class="nav-actions">
       <a href="#" class="btn btn-ghost">Log In</a>
       <a href="#" class="btn btn-primary">Start Free</a>
@@ -393,7 +417,7 @@
   <div class="hero-inner">
     <div>
       <div class="hero-badge">For Traders</div>
-      <h1>Get trade calls from<br><em>verified experts,</em><br>not noise.</h1>
+      <h1>Get Real-Time Trading &amp; Investing Ideas<br>from <em>Verified Experts</em></h1>
       <p class="lead">Subscribe to SEBI-registered Research Analysts and receive real-time BUY/SELL ideas with entry, target & stop-loss — the moment they're published.</p>
       <div class="hero-ctas">
         <a href="#" class="btn btn-primary btn-lg">Start Free — No Card Needed</a>
@@ -509,45 +533,118 @@
     </div>
     <div class="features-grid">
       <div class="feat-card reveal">
-        <div class="feat-icon fi-1">⚡</div>
+        <div class="feat-icon fi-1">&#9889;</div>
         <h3>Real-Time Trade Alerts</h3>
         <p>The instant a Research Analyst hits publish, you get notified. Every idea includes entry price, target, stop-loss, segment, and rationale.</p>
-        <div class="feat-detail">
-          <div class="feat-detail-row"><span>Average delivery time</span><span class="fdr-val">&lt; 3 seconds</span></div>
-          <div class="feat-detail-row"><span>Channels</span><span class="fdr-val">App + SMS + WhatsApp</span></div>
-          <div class="feat-detail-row"><span>Segments covered</span><span class="fdr-val">Intraday, Swing, F&O, Positional</span></div>
-        </div>
       </div>
       <div class="feat-card reveal d2">
-        <div class="feat-icon fi-2">🔒</div>
-        <h3>Timestamped & Verified Calls</h3>
-        <p>Every trade idea is cryptographically timestamped at the moment of publish. No one can backdate calls or claim performance that didn't happen.</p>
-        <div class="feat-detail">
-          <div class="feat-detail-row"><span>Timestamp standard</span><span class="fdr-val green">Blockchain-anchored</span></div>
-          <div class="feat-detail-row"><span>Proof available</span><span class="fdr-val green">Always downloadable</span></div>
-          <div class="feat-detail-row"><span>RA verification</span><span class="fdr-val green">SEBI registration checked</span></div>
-        </div>
+        <div class="feat-icon fi-2">&#128274;</div>
+        <h3>Timestamped &amp; Verified Calls</h3>
+        <p>Every trade idea is cryptographically timestamped at the moment of publish. No one can backdate calls or claim performance that didn&rsquo;t happen.</p>
       </div>
-      <div class="feat-card reveal">
-        <div class="feat-icon fi-3">🎯</div>
+      <div class="feat-card reveal d3">
+        <div class="feat-icon fi-3">&#127919;</div>
         <h3>One-Click Broker Execution</h3>
-        <p>Connect Zerodha, Upstox, Angel One or 10+ other brokers. When an alert arrives, tap once — the order is pre-filled and ready.</p>
-        <div class="feat-detail">
-          <div class="feat-detail-row"><span>Supported brokers</span><span class="fdr-val">Zerodha, Upstox, Angel One +10</span></div>
-          <div class="feat-detail-row"><span>Order prefill</span><span class="fdr-val green">Qty, price, SL auto-set</span></div>
-          <div class="feat-detail-row"><span>Execution steps</span><span class="fdr-val green">1 tap</span></div>
-        </div>
+        <p>Connect Zerodha, Upstox, Angel One or 10+ other brokers. When an alert arrives, tap once &mdash; the order is pre-filled and ready.</p>
       </div>
-      <div class="feat-card reveal d2">
-        <div class="feat-icon fi-4">📋</div>
+      <div class="feat-card reveal d4">
+        <div class="feat-icon fi-4">&#128203;</div>
         <h3>Flexible Subscription Plans</h3>
-        <p>Each analyst sets their own pricing. Subscribe monthly or annually. Cancel anytime. Mix and match up to 5 analysts on the Pro plan.</p>
-        <div class="feat-detail">
-          <div class="feat-detail-row"><span>Free plan</span><span class="fdr-val">1 RA · Delayed alerts</span></div>
-          <div class="feat-detail-row"><span>Pro plan</span><span class="fdr-val">Up to 5 RAs · Real-time</span></div>
-          <div class="feat-detail-row"><span>Trial</span><span class="fdr-val green">14 days free on Pro</span></div>
-        </div>
+        <p>Each analyst sets their own pricing. Subscribe monthly or annually. Cancel anytime. Mix and match multiple analysts to suit your trading style.</p>
       </div>
+    </div>
+  </div>
+</section>
+
+<!-- TRUST CARDS -->
+<section style="background:var(--white);padding:88px 40px;border-top:1px solid var(--line);">
+  <div style="max-width:1100px;margin:0 auto;">
+    <div class="reveal" style="text-align:center;margin-bottom:52px;">
+      <span class="section-tag">Why Stoxify</span>
+      <h2>Built on trust, regulated by SEBI.</h2>
+      <p class="lead" style="margin:12px auto 0;max-width:500px;">Every part of Stoxify is designed to protect traders and hold Research Analysts to the highest professional standard.</p>
+    </div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">
+
+      <div class="trust-card reveal">
+        <div style="display:flex;align-items:center;gap:14px;margin-bottom:18px;">
+          <div style="width:48px;height:48px;border-radius:10px;background:var(--brand-light);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M12 2L3 7v5c0 5.25 3.75 10.15 9 11.35C17.25 22.15 21 17.25 21 12V7L12 2z" fill="var(--brand)" opacity="0.15"/>
+              <path d="M12 2L3 7v5c0 5.25 3.75 10.15 9 11.35C17.25 22.15 21 17.25 21 12V7L12 2z" stroke="var(--brand)" stroke-width="1.5" stroke-linejoin="round"/>
+              <path d="M9 12l2 2 4-4" stroke="var(--brand)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <h3 style="font-size:16px;font-weight:600;color:var(--ink);letter-spacing:-0.01em;margin:0;">Verified SEBI-Registered Experts</h3>
+        </div>
+        <p style="font-size:13px;color:var(--muted);margin-bottom:14px;line-height:1.6;">Every Research Analyst on Stoxify undergoes strict verification before going live:</p>
+        <ul style="list-style:none;display:flex;flex-direction:column;gap:8px;">
+          <li style="display:flex;align-items:center;gap:10px;font-size:13px;color:var(--muted);"><span style="width:6px;height:6px;border-radius:50%;background:var(--brand);flex-shrink:0;display:block;"></span>Valid SEBI Registration Number</li>
+          <li style="display:flex;align-items:center;gap:10px;font-size:13px;color:var(--muted);"><span style="width:6px;height:6px;border-radius:50%;background:var(--brand);flex-shrink:0;display:block;"></span>Regulatory &amp; Conflict of Interest Disclosures</li>
+          <li style="display:flex;align-items:center;gap:10px;font-size:13px;color:var(--muted);"><span style="width:6px;height:6px;border-radius:50%;background:var(--brand);flex-shrink:0;display:block;"></span>Registration validity &amp; category confirmed</li>
+          <li style="display:flex;align-items:center;gap:10px;font-size:13px;color:var(--muted);"><span style="width:6px;height:6px;border-radius:50%;background:var(--brand);flex-shrink:0;display:block;"></span>Past research samples reviewed</li>
+        </ul>
+      </div>
+
+      <div class="trust-card reveal d2">
+        <div style="display:flex;align-items:center;gap:14px;margin-bottom:18px;">
+          <div style="width:48px;height:48px;border-radius:10px;background:var(--brand-light);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect x="3" y="4" width="18" height="16" rx="2" stroke="var(--brand)" stroke-width="1.5"/>
+              <path d="M7 9h10M7 13h6" stroke="var(--brand)" stroke-width="1.5" stroke-linecap="round"/>
+              <circle cx="17" cy="15" r="2" fill="var(--brand)" opacity="0.3" stroke="var(--brand)" stroke-width="1"/>
+            </svg>
+          </div>
+          <h3 style="font-size:16px;font-weight:600;color:var(--ink);letter-spacing:-0.01em;margin:0;">Transparent RA Profiles</h3>
+        </div>
+        <p style="font-size:13px;color:var(--muted);margin-bottom:14px;line-height:1.6;">Every analyst has a verified public profile. Before subscribing, you can view:</p>
+        <ul style="list-style:none;display:flex;flex-direction:column;gap:8px;">
+          <li style="display:flex;align-items:center;gap:10px;font-size:13px;color:var(--muted);"><span style="width:6px;height:6px;border-radius:50%;background:var(--brand);flex-shrink:0;display:block;"></span>Experience &amp; research methodology</li>
+          <li style="display:flex;align-items:center;gap:10px;font-size:13px;color:var(--muted);"><span style="width:6px;height:6px;border-radius:50%;background:var(--brand);flex-shrink:0;display:block;"></span>Verified hit rate &amp; historical performance</li>
+          <li style="display:flex;align-items:center;gap:10px;font-size:13px;color:var(--muted);"><span style="width:6px;height:6px;border-radius:50%;background:var(--brand);flex-shrink:0;display:block;"></span>Subscription fee structure</li>
+          <li style="display:flex;align-items:center;gap:10px;font-size:13px;color:var(--muted);"><span style="width:6px;height:6px;border-radius:50%;background:var(--brand);flex-shrink:0;display:block;"></span>Segment focus &amp; trading style</li>
+        </ul>
+      </div>
+
+      <div class="trust-card reveal d3">
+        <div style="display:flex;align-items:center;gap:14px;margin-bottom:18px;">
+          <div style="width:48px;height:48px;border-radius:10px;background:var(--green-light);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2V9z" stroke="var(--green)" stroke-width="1.5" stroke-linejoin="round"/>
+              <path d="M9 22V12h6v10" stroke="var(--green)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <h3 style="font-size:16px;font-weight:600;color:var(--ink);letter-spacing:-0.01em;margin:0;">Independent Marketplace</h3>
+        </div>
+        <p style="font-size:13px;color:var(--muted);margin-bottom:14px;line-height:1.6;">Stoxify is a neutral marketplace. We do not provide tips, calls, or advice of our own.</p>
+        <ul style="list-style:none;display:flex;flex-direction:column;gap:8px;">
+          <li style="display:flex;align-items:center;gap:10px;font-size:13px;color:var(--muted);"><span style="width:6px;height:6px;border-radius:50%;background:var(--green);flex-shrink:0;display:block;"></span>Only SEBI-registered RAs publish research</li>
+          <li style="display:flex;align-items:center;gap:10px;font-size:13px;color:var(--muted);"><span style="width:6px;height:6px;border-radius:50%;background:var(--green);flex-shrink:0;display:block;"></span>All ideas timestamped &amp; sealed at publish</li>
+          <li style="display:flex;align-items:center;gap:10px;font-size:13px;color:var(--muted);"><span style="width:6px;height:6px;border-radius:50%;background:var(--green);flex-shrink:0;display:block;"></span>No backdating or performance manipulation</li>
+          <li style="display:flex;align-items:center;gap:10px;font-size:13px;color:var(--muted);"><span style="width:6px;height:6px;border-radius:50%;background:var(--green);flex-shrink:0;display:block;"></span>Full SEBI audit trail maintained always</li>
+        </ul>
+      </div>
+
+      <div class="trust-card reveal d4">
+        <div style="display:flex;align-items:center;gap:14px;margin-bottom:18px;">
+          <div style="width:48px;height:48px;border-radius:10px;background:var(--orange-light);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect x="2" y="6" width="20" height="13" rx="2" stroke="var(--orange)" stroke-width="1.5"/>
+              <path d="M2 10h20" stroke="var(--orange)" stroke-width="1.5"/>
+              <path d="M6 15h4" stroke="var(--orange)" stroke-width="1.5" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <h3 style="font-size:16px;font-weight:600;color:var(--ink);letter-spacing:-0.01em;margin:0;">Secure Payments</h3>
+        </div>
+        <p style="font-size:13px;color:var(--muted);margin-bottom:14px;line-height:1.6;">Subscription fees go directly to the Research Analyst through a regulated payment channel.</p>
+        <ul style="list-style:none;display:flex;flex-direction:column;gap:8px;">
+          <li style="display:flex;align-items:center;gap:10px;font-size:13px;color:var(--muted);"><span style="width:6px;height:6px;border-radius:50%;background:var(--orange);flex-shrink:0;display:block;"></span>No hidden charges or commissions</li>
+          <li style="display:flex;align-items:center;gap:10px;font-size:13px;color:var(--muted);"><span style="width:6px;height:6px;border-radius:50%;background:var(--orange);flex-shrink:0;display:block;"></span>Transparent 5% platform fee only</li>
+          <li style="display:flex;align-items:center;gap:10px;font-size:13px;color:var(--muted);"><span style="width:6px;height:6px;border-radius:50%;background:var(--orange);flex-shrink:0;display:block;"></span>GST-compliant invoices generated</li>
+          <li style="display:flex;align-items:center;gap:10px;font-size:13px;color:var(--muted);"><span style="width:6px;height:6px;border-radius:50%;background:var(--orange);flex-shrink:0;display:block;"></span>Cancel or pause subscriptions anytime</li>
+        </ul>
+      </div>
+
     </div>
   </div>
 </section>
@@ -704,57 +801,6 @@
   </div>
 </section>
 
-<!-- PRICING -->
-<section class="pricing" id="pricing">
-  <div class="pricing-inner">
-    <div class="pricing-header reveal">
-      <span class="section-tag">Pricing</span>
-      <h2>Start free. Scale when ready.</h2>
-      <p class="lead" style="margin:12px auto 0;max-width:460px;">Transparent pricing. No hidden fees. Cancel anytime.</p>
-    </div>
-    <div class="pricing-grid">
-      <div class="price-card reveal">
-        <div class="price-plan">Starter</div>
-        <div class="price-amount">Free</div>
-        <div class="price-per">forever</div>
-        <ul class="price-features">
-          <li><div class="pf-check">✓</div>1 RA subscription</li>
-          <li><div class="pf-check">✓</div>15-min delayed alerts</li>
-          <li><div class="pf-check">✓</div>Basic P&L dashboard</li>
-          <li><div class="pf-check">✓</div>Web access</li>
-        </ul>
-        <a href="#" class="btn btn-ghost" style="width:100%;justify-content:center;">Get Started Free</a>
-      </div>
-      <div class="price-card featured reveal d2">
-        <div class="price-featured-tag">MOST POPULAR</div>
-        <div class="price-plan">Pro</div>
-        <div class="price-amount">₹999</div>
-        <div class="price-per">per month · 14-day free trial</div>
-        <ul class="price-features">
-          <li><div class="pf-check">✓</div>Up to 5 RA subscriptions</li>
-          <li><div class="pf-check">✓</div>Real-time alerts (&lt;3 sec)</li>
-          <li><div class="pf-check">✓</div>One-click broker execution</li>
-          <li><div class="pf-check">✓</div>Full analytics dashboard</li>
-          <li><div class="pf-check">✓</div>Priority support</li>
-        </ul>
-        <a href="#" class="btn" style="width:100%;justify-content:center;background:white;color:var(--brand);font-weight:700;">Start 14-Day Free Trial</a>
-      </div>
-      <div class="price-card reveal d4">
-        <div class="price-plan">Power</div>
-        <div class="price-amount">₹2,499</div>
-        <div class="price-per">per month</div>
-        <ul class="price-features">
-          <li><div class="pf-check">✓</div>Unlimited RA subscriptions</li>
-          <li><div class="pf-check">✓</div>All Pro features</li>
-          <li><div class="pf-check">✓</div>API access</li>
-          <li><div class="pf-check">✓</div>Dedicated account manager</li>
-        </ul>
-        <a href="#" class="btn btn-dark" style="width:100%;justify-content:center;">Contact Sales</a>
-      </div>
-    </div>
-  </div>
-</section>
-
 <!-- FINAL CTA -->
 <section class="final-cta">
   <h2 class="reveal">Start trading smarter today.</h2>
@@ -795,13 +841,13 @@
           <li><a href="#">Privacy Policy</a></li>
           <li><a href="#">Terms</a></li>
           <li><a href="#">SEBI Disclosures</a></li>
-          <li><a href="#">Grievance Redressal</a></li>
+          <li><a href="grievance.html">Grievance Redressal</a></li>
         </ul>
       </div>
     </div>
     <div class="footer-bottom">
       <div class="footer-copy">© 2026 Stoxify Technologies Pvt. Ltd.</div>
-      <div class="footer-legal"><a href="#">Privacy</a><a href="#">Terms</a><a href="#">Disclosures</a></div>
+      <div class="footer-legal"><a href="privacy.html">Privacy</a><a href="terms.html">Terms</a><a href="sebi-disclosures.html">Disclosures</a></div>
     </div>
     <p class="footer-disclaimer">All trade ideas on Stoxify are published by SEBI-registered Research Analysts. Stoxify is a technology intermediary and does not provide investment advice. Investments in securities are subject to market risks. Read all scheme related documents carefully. Past performance is not indicative of future results.</p>
   </div>
@@ -819,6 +865,23 @@ document.querySelectorAll('.filter-btn').forEach(btn => {
     btn.classList.add('active');
   });
 });
+</script>
+<script>
+(function(){
+  var btn = document.getElementById('nav-hamburger');
+  var links = document.querySelector('.nav-links');
+  if(!btn || !links) return;
+  btn.addEventListener('click', function(){
+    btn.classList.toggle('open');
+    links.classList.toggle('open');
+  });
+  links.querySelectorAll('a').forEach(function(a){
+    a.addEventListener('click', function(){
+      btn.classList.remove('open');
+      links.classList.remove('open');
+    });
+  });
+})();
 </script>
 </body>
 </html>
